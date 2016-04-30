@@ -1,0 +1,27 @@
+{
+    "name": "interpro/smm",
+    "description": "SMM module for Quick storage",
+    "keywords": [
+        "smm, qstorage"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Konstantin Khalyuchenko",
+            "email": "mr.kaluchii@mail.ru"
+        }
+    ],
+    "autoload": {
+        "classmap": [],
+        "files": [],
+        "psr-4": {
+            "Interpro\\SMM\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
