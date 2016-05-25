@@ -60,8 +60,7 @@ class SMMFieldSaver implements FieldSaverInterface
                 throw new SMMException('Идентификатор SMM '.$name.' не существует.');
             }
 
-            $item = Smmfield::firstOrNew(['entity_name'=>$entity_name, 'entity_id'=>$entity_id]);
-            $item->name = $name;
+            $item = Smmfield::firstOrNew(['entity_name'=>$entity_name, 'entity_id'=>$entity_id, 'name'=>$name]);
             $item->value = $value;
             $item->save();
         }
