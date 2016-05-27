@@ -73,13 +73,23 @@ class SMMRepository implements SMMRepositoryInterface
      */
     public function getFieldValue($entity_name, $field_name, $entity_id)
     {
+        $raw = (substr($field_name, 0, 3) === 'raw');
+
+        if($raw){ //Если значение поля запрашивают без обработки шаблоном конфига
+            $field_name = substr($field_name, 3);
+        }
+
         $rkey = $entity_name.'_'.$entity_id;
 
         $this->queryFields($entity_name, $entity_id);
 
         if(array_key_exists($field_name, $this->fields[$rkey]))
         {
-            return $this->composeField($field_name, $this->fields[$rkey][$field_name]);
+            if($raw){
+                return $this->fields[$rkey][$field_name];
+            }else{
+                return $this->composeField($field_name, $this->fields[$rkey][$field_name]);
+            }
         }else{
 
             //Просто возвращаем пустую строку, отсутствие smm описания это не ошибка
