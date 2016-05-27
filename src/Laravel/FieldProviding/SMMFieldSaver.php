@@ -48,11 +48,13 @@ class SMMFieldSaver implements FieldSaverInterface
 
                 $name = $val_array['name'];
             }else{
-                $name = 'empty';
+                throw new SMMException('Не передано имя идентификатора SMM поля.');
             }
             if(array_key_exists('value', $val_array)){
 
                 $value = $val_array['value'];
+            }else{
+                $value = '';
             }
 
             if(!array_key_exists($name ,$fields_config))
