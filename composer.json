@@ -2,7 +2,7 @@
     "name": "interpro/smm",
     "description": "SMM module for Quick storage",
     "keywords": [
-        "smm, qstorage"
+        "smm", "qstorage"
     ],
     "license": "MIT",
     "authors": [
