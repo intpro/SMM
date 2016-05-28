@@ -1,6 +1,6 @@
-<?php namespace Interpro\QuickStorage\Concept\Command;
+<?php namespace Interpro\SMM\Concept\Command;
 
-class SaveGlobalSMMCommand extends Command {
+class SaveGlobalSMMCommand {
 
     public $name;
     public $value;

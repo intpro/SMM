@@ -25,7 +25,7 @@ class SMMServiceProvider extends ServiceProvider {
         ], 'migrations');
 
         $dispatcher->maps([
-            //'Interpro\SMM\Concept\Command\ExampleSMMCommand' => 'Interpro\SMM\Laravel\Handle\ExampleSMMCommandHandler@handle',
+            'Interpro\SMM\Concept\Command\SaveGlobalSMMCommand' => 'Interpro\SMM\Laravel\Handle\SaveGlobalsCommandHandler@handle',
         ]);
     }
 
@@ -48,6 +48,11 @@ class SMMServiceProvider extends ServiceProvider {
         $this->app->singleton(
             'Interpro\SMM\Concept\SMMRepository',
             'Interpro\SMM\Laravel\SMMRepository'
+        );
+
+        $this->app->singleton(
+            'Interpro\SMM\Concept\Collection\SMMFieldsCollectionFactory',
+            'Interpro\SMM\Laravel\Collection\SMMFieldsCollectionFactory'
         );
 
         $this->app->make('Interpro\SMM\Laravel\Http\SMMController');

@@ -1,7 +1,6 @@
 <?php namespace Interpro\SMM\Laravel\Handle;
 
-use Illuminate\Support\Facades\Log;
-use Interpro\QuickStorage\Concept\Command\SaveGlobalSMMCommand;
+use Interpro\SMM\Concept\Command\SaveGlobalSMMCommand;
 use Interpro\SMM\Laravel\Model\Smmglobal;
 
 class SaveGlobalsCommandHandler {

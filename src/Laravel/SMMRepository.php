@@ -13,7 +13,7 @@ class SMMRepository implements SMMRepositoryInterface
     private $field_conf;
     private $global_conf;
     private $global_vals;
-
+    private $collectionFactory;
 
     public function __construct()
     {
@@ -21,7 +21,8 @@ class SMMRepository implements SMMRepositoryInterface
         $this->field_conf = config('smm.fields');
         $this->global_conf = config('smm.globals');
 
-        $this->model = App::make('Interpro\SMM\Laravel\Model\Smmfield');
+        $this->model             = App::make('Interpro\SMM\Laravel\Model\Smmfield');
+        $this->collectionFactory = App::make('Interpro\SMM\Laravel\Collection\SMMFieldsCollectionFactory');
     }
 
     /**
@@ -82,6 +83,11 @@ class SMMRepository implements SMMRepositoryInterface
         $rkey = $entity_name.'_'.$entity_id;
 
         $this->queryFields($entity_name, $entity_id);
+
+        //Если запросили всю коллекцию полей
+        if($field_name === 'fieldscoll'){
+            return $this->collectionFactory->create($this->fields[$rkey]);
+        }
 
         if(array_key_exists($field_name, $this->fields[$rkey]))
         {
