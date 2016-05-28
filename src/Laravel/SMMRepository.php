@@ -86,7 +86,7 @@ class SMMRepository implements SMMRepositoryInterface
 
         //Если запросили всю коллекцию полей
         if($field_name === 'fieldscoll'){
-            return $this->collectionFactory->create($this->fields[$rkey]);
+            return $this->collectionFactory->create($entity_name, $entity_id, $this->fields[$rkey]);
         }
 
         if(array_key_exists($field_name, $this->fields[$rkey]))
