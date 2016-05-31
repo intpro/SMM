@@ -9,10 +9,11 @@ class SMMFieldItem implements SMMFieldItemInterface
     private $name;
     private $value;
 
-    public function __construct($name, $value)
+    public function __construct($name, $value, $isempty)
     {
-        $this->name = $name;
-        $this->value = $value;
+        $this->name    = $name;
+        $this->value   = $value;
+        $this->isempty = $isempty;
     }
 
     public function __get($req_name)
@@ -24,6 +25,10 @@ class SMMFieldItem implements SMMFieldItemInterface
         }elseif($req_name === 'value'){
 
             return $this->value;
+
+        }elseif($req_name === 'isempty'){
+
+            return $this->isempty;
 
         }else{
 

@@ -6,6 +6,12 @@ use Interpro\SMM\Concept\Collection\SMMFieldsCollectionFactory as SMMFieldsColle
 
 class SMMFieldsCollectionFactory implements SMMFieldsCollectionFactoryInterface
 {
+    private $fields;
+
+    public function __construct(){
+        $this->fields = config('smm.fields');
+    }
+
     /**
      * @param string $entity_name
      *
@@ -17,6 +23,18 @@ class SMMFieldsCollectionFactory implements SMMFieldsCollectionFactoryInterface
      */
     public function create($entity_name, $entity_id, $fields_arr)
     {
-        return new SMMFieldsCollection($entity_name, $entity_id, $fields_arr);
+        $items = [];
+
+        foreach($fields_arr as $name => $value){
+            $items[] = ['name' => $name, 'value' => $value, 'isempty' => false];
+        }
+
+        foreach($this->fields as $name => $templ){
+            if(!array_key_exists($name, $fields_arr)){
+                $items[] = ['name' => $name, 'value' => '', 'isempty' => true];
+            }
+        }
+
+        return new SMMFieldsCollection($entity_name, $entity_id, $items);
     }
 }

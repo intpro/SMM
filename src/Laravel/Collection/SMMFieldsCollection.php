@@ -21,10 +21,7 @@ class SMMFieldsCollection implements SMMFieldsCollectionInterface
         $this->entity_name = $entity_name;
         $this->entity_id   = $entity_id;
         $this->position    = 0;
-
-        foreach($fields_arr as $name => $value){
-            $this->items[] = ['name' => $name, 'value' => $value];
-        }
+        $this->items       = $fields_arr;
     }
 
     private function createItem($position)
@@ -38,7 +35,8 @@ class SMMFieldsCollection implements SMMFieldsCollectionInterface
 
             $item = new SMMFieldItem(
                 $this->items[$position]['name'],
-                $this->items[$position]['value']);
+                $this->items[$position]['value'],
+                $this->items[$position]['isempty']);
 
             $this->object_items[$pos_key] = $item;
         }

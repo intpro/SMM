@@ -26,6 +26,7 @@ class SMMServiceProvider extends ServiceProvider {
 
         $dispatcher->maps([
             'Interpro\SMM\Concept\Command\SaveGlobalSMMCommand' => 'Interpro\SMM\Laravel\Handle\SaveGlobalsCommandHandler@handle',
+            'Interpro\SMM\Concept\Command\DeleteSMMFieldCommand' => 'Interpro\SMM\Laravel\Handle\DeleteSMMFieldCommandHandler@handle'
         ]);
     }
 
